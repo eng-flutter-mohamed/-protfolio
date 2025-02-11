@@ -30,7 +30,7 @@ class AboutMeSection extends StatelessWidget {
           const SizedBox(height: 8),
           const ExperienceInfo(),
           const SizedBox(height: 58),
-          const BasicServicesGrid(),
+        //  const BasicServicesGrid(),
           const SizedBox(height: 80),
           const DetailedServicesSection(),
         ],

@@ -7,15 +7,13 @@ abstract class AppConstants {
   static const List<CustomService> services = [
     CustomService(
       service: 'MOBILE DEVELOPMENT',
-      logo: AppAssets
-          .flutterLogo, 
+      logo: AppAssets.flutterLogo,
       description:
           'I develop high-performance mobile applications using Flutter, delivering seamless experiences on both Android and iOS platforms.',
     ),
     CustomService(
       service: 'DESKTOP DEVELOPMENT',
-      logo: AppAssets
-          .flutterLogo, 
+      logo: AppAssets.flutterLogo,
       description:
           'I create cross-platform desktop applications with Flutter, ensuring consistency and excellent performance across Windows, macOS, and Linux.',
     ),
@@ -29,6 +27,9 @@ abstract class AppConstants {
   ];
   static const List<Project> projects = [
     Project(
+      image1: 'assets/images/goaraa.png',
+      image2: 'assets/images/goaraa2.png',
+      image3: 'assets/images/goaraa1.png',
       name: 'Goaara',
       imageUrl: 'https://i.postimg.cc/j2Z9csHP/logo.png',
       description:
@@ -37,6 +38,9 @@ abstract class AppConstants {
       previewLink: 'https://youtube.com/shorts/DX7cvCXZA5c?si=mV18qGFeDbRF4moA',
     ),
     Project(
+      image1: 'assets/images/med1.png',
+      image2: 'assets/images/med2.png',
+      image3: 'assets/images/med3.png',
       name: 'med share rx',
       imageUrl: 'https://i.postimg.cc/N0C53TQz/icon.png',
       description:
@@ -46,6 +50,9 @@ abstract class AppConstants {
           'https://www.figma.com/design/tA0XqylRpOygqWFmzh7nBR/Untitled?node-id=469-2021&p=f&t=ypkMiheefbLZPc7s-0',
     ),
     Project(
+      image1: 'assets/images/Tog1.png',
+      image2: 'assets/images/Tog2.png',
+      image3: 'assets/images/Tog3.png',
       name: 'Tog',
       imageUrl: 'https://i.postimg.cc/x8Bg7qfv/logo.png',
       description:
@@ -55,6 +62,9 @@ abstract class AppConstants {
           'https://play.google.com/store/apps/details?id=com.manaratalasr.apps.tog',
     ),
     Project(
+      image1: 'assets/images/ecommerce1.png',
+      image2: 'assets/images/ecommerce2.png',
+      image3: 'assets/images/ecommerce3.png',
       name: 'Fuve',
       imageUrl: 'https://i.postimg.cc/x1mjBZRM/image.png',
       description:
@@ -64,6 +74,9 @@ abstract class AppConstants {
           'https://www.figma.com/design/bYYmtezTg0jPp0WqINEvPQ/Accessories?node-id=220-3796&t=fRik3LqLTo7G215i-0',
     ),
     Project(
+      image1: 'assets/images/gpa1.png',
+      image2: 'assets/images/gpa2.png',
+      image3: 'assets/images/gpa3.png',
       name: 'Gpa app',
       imageUrl: 'https://i.postimg.cc/NGWjbY8B/logoApp.png',
       description:
@@ -71,32 +84,42 @@ abstract class AppConstants {
       githubRepoLink: 'https://github.com/eng-flutter-mohamed/Gpa-App',
       previewLink: 'https://youtube.com/shorts/Rd2aXRycaIk',
     ),
-      Project(
-      githubRepoLink: 'https://github.com/eng-flutter-mohamed/sigmaty',
+    Project(
+      image1: 'assets/images/sigmaty1.png',
+      image2: 'assets/images/sigmaty2.png',
+      image3: 'assets/images/sigmaty3.png',
       name: 'sigmaty',
       imageUrl: 'https://i.postimg.cc/pdYsc257/sigmaty-logo.png',
       description:
           'An educational management system designed for teachers, students, and parents. The app facilitates lesson scheduling, tracks student progress, and includes a parent dashboard for monitoring. It utilizes Firebase for authentication, Supabase for data management, and GetX for real-time updates.',
+      githubRepoLink: 'https://github.com/eng-flutter-mohamed/sigmaty',
       previewLink:
           'https://www.figma.com/design/p1e35vf8jSyiDa5lq7ROnP/Sigmaty?node-id=0-1&p=f&t=8utQela73IVlBcKS-0',
     ),
     Project(
+      image1: 'assets/images/PizzaApp1.png',
+      image2: 'assets/images/PizzaApp2.png',
+      image3: 'assets/images/PizzaApp3.png',
       name: 'pizaaApp',
       imageUrl: 'https://i.postimg.cc/59vSs9cm/pizza.png',
       description:
           'PizzaApp is a restaurant application designed to offer a seamless food ordering experience. Users can browse the menu, customize their orders, and place requests effortlessly. The app features a smooth UI with Flutter and uses efficient state management for a responsive and dynamic experience',
-      previewLink:
-          'https://drive.google.com/file/d/1q0byVRvYEjj9cln5L_VM1dCT9vhUpfcn/view?usp=sharing',
       githubRepoLink:
           'https://play.google.com/store/apps/details?id=com.radyhaggag.zawilan',
+      previewLink:
+          'https://drive.google.com/file/d/1q0byVRvYEjj9cln5L_VM1dCT9vhUpfcn/view?usp=sharing',
     ),
     Project(
-        name: 'rick and mortty app',
-        imageUrl: 'https://i.postimg.cc/1zpGRJ9N/1.png',
-        description:
-            'This app allows users to explore characters from the Rick and Morty series. Users can search for characters, view detailed information about each one, and navigate through their profiles. The app fetches data from an API and is built using Flutter with BLoC for state management, ensuring smooth performance and a structured architecture. ',
-        previewLink: 'https://youtu.be/_ctOIWNv-Uw?si=7mi9x6m-z6JSw43R',
-        githubRepoLink:
-            'https://github.com/eng-flutter-mohamed/rick-and-mortty-app'),
+      image1: 'assets/images/rick1.png',
+      image2: 'assets/images/rick2.png',
+      image3: 'assets/images/rick3.png',
+      name: 'rick and mortty app',
+      imageUrl: 'https://i.postimg.cc/1zpGRJ9N/1.png',
+      description:
+          'This app allows users to explore characters from the Rick and Morty series. Users can search for characters, view detailed information about each one, and navigate through their profiles. The app fetches data from an API and is built using Flutter with BLoC for state management, ensuring smooth performance and a structured architecture.',
+      githubRepoLink:
+          'https://github.com/eng-flutter-mohamed/rick-and-mortty-app',
+      previewLink: 'https://youtu.be/_ctOIWNv-Uw?si=7mi9x6m-z6JSw43R',
+    ),
   ];
 }

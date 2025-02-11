@@ -16,33 +16,62 @@ class ProjectItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: AppColors.primaryLight,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+          borderRadius: BorderRadius.circular(8),
+          image: DecorationImage(
+              image: AssetImage(
+            'assets/images/background.png', // تأكد من وضع مسار الصورة الصحيح
+          ))),
+      child: Row(
         children: [
-          ProjectImage( 
-            imageUrl: project.imageUrl),
-          const SizedBox(height: 16),
-          FittedBox(
-            child: Text(
-              project.name,
-              style: AppStyles.s24.copyWith(color: AppColors.primaryColor),
-            ),
-          ),
-          const SizedBox(height: 8),
           Expanded(
-            child: AutoSizeText(
-              project.description,
-              style: AppStyles.s18,
-              minFontSize: 12,
-              maxLines: 8,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ProjectImage(imageUrl: project.imageUrl),
+                const SizedBox(height: 16),
+                FittedBox(
+                  child: Text(
+                    project.name,
+                    style:
+                        AppStyles.s24.copyWith(color: AppColors.primaryColor),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Expanded(
+                  child: AutoSizeText(
+                    project.description,
+                    style: AppStyles.s18,
+                    minFontSize: 12,
+                    maxLines: 8,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                ProjectActions(project: project)
+              ],
             ),
           ),
-          const SizedBox(height: 8),
-          // if (project.previewLink != null || project.githubRepoLink != null)
-          ProjectActions(project: project)
+          Expanded(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                        child: Image.asset(project.image3
+                            // "assets/images/med1.png",
+                            )),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Expanded(child: Image.asset(project.image2)),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Image.asset(project.image1),
+              ],
+            ),
+          )
         ],
       ),
     );
