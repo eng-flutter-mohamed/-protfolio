@@ -13,12 +13,11 @@ dependencies:
   auto_size_text: ^3.0.0
   cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.2
-  equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_bloc: ^9.0.0
   flutter_svg: ^2.0.2
   font_awesome_flutter: ^10.4.0
+  get: ^4.6.6
   shimmer: ^3.0.0
   universal_html: ^2.0.9
   url_launcher: ^6.3.1

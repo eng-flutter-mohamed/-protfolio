@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
@@ -18,63 +19,90 @@ class DetailedServiceItem extends StatefulWidget {
 }
 
 class _DetailedServiceItemState extends State<DetailedServiceItem> {
-  Color itemColor = AppColors.white;
+  bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 10,
-      ),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: itemColor,
-          width: 3,
-        ),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: MouseRegion(
-        onEnter: _onEnter,
-        onExit: _onExit,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              widget.service.logo,
-              height: context.width < DeviceType.mobile.getMinWidth() ? 40 : 56,
-            ),
-            const SizedBox(height: 16),
-            FittedBox(
-              child: Text(
-                widget.service.service,
-                style: AppStyles.s24.copyWith(color: itemColor),
-                textAlign: TextAlign.center,
+    final bool showDescription =
+        context.width > DeviceType.mobile.getMinWidth();
+    return MouseRegion(
+      onEnter: (_) => _setHover(true),
+      onExit: (_) => _setHover(false),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final bool isCompact = constraints.maxHeight < 220;
+          return AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              color: AppColors.cardColor.withOpacity(.85),
+              border: Border.all(
+                color: _hovered
+                    ? AppColors.primaryColor
+                    : AppColors.borderColor.withOpacity(.4),
               ),
+              boxShadow: _hovered
+                  ? [
+                      BoxShadow(
+                        color: AppColors.primaryColor.withOpacity(.25),
+                        blurRadius: 18,
+                        offset: const Offset(0, 10),
+                      ),
+                    ]
+                  : null,
             ),
-            if (context.width > DeviceType.mobile.getMinWidth()) ...[
-              const SizedBox(height: 16),
-              Flexible(
-                child: AutoSizeText(
-                  widget.service.description,
-                  style: AppStyles.s17,
-                  minFontSize: 8,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryLight.withOpacity(.5),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: SvgPicture.asset(
+                    widget.service.logo,
+                    height: context.width < DeviceType.mobile.getMinWidth()
+                        ? 36
+                        : 48,
+                    colorFilter: ColorFilter.mode(
+                      _hovered ? AppColors.white : AppColors.primaryColor,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  widget.service.titleKey.tr,
+                  style: (isCompact ? AppStyles.s18 : AppStyles.s24).copyWith(
+                    color: _hovered ? AppColors.white : AppColors.primaryColor,
+                  ),
                   textAlign: TextAlign.center,
                 ),
-              ),
-            ]
-          ],
-        ),
+                if (showDescription) ...[
+                  const SizedBox(height: 12),
+                  Expanded(
+                    child: AutoSizeText(
+                      widget.service.descriptionKey.tr,
+                      style: AppStyles.s17,
+                      minFontSize: isCompact ? 8 : 10,
+                      maxLines: isCompact ? 4 : 6,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          );
+        },
       ),
     );
   }
 
-  void _onExit(event) {
-    setState(() => itemColor = AppColors.white);
-  }
-
-  void _onEnter(event) {
-    setState(() => itemColor = AppColors.primaryColor);
+  void _setHover(bool hovered) {
+    if (_hovered == hovered) return;
+    setState(() => _hovered = hovered);
   }
 }

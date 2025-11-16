@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import 'app_enums.dart';
+import 'app_strings.dart';
 
 extension AppBarHeaderExtension on AppBarHeaders {
-  String getString() {
+  String get label {
     switch (this) {
       case AppBarHeaders.home:
-        return 'Home';
+        return AppStrings.headerHome.tr;
       case AppBarHeaders.aboutMe:
-        return 'About me';
+        return AppStrings.headerAbout.tr;
       case AppBarHeaders.projects:
-        return 'Projects';
+        return AppStrings.headerProjects.tr;
       case AppBarHeaders.contact:
-        return 'Contact';
+        return AppStrings.headerContact.tr;
     }
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/utils/app_extensions.dart';
+import 'package:get/get.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_enums.dart';
+import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_styles.dart';
-import '../../blocs/home_bloc/home_bloc.dart';
+import '../../controllers/portfolio_controller.dart';
 
 class CustomHeaderBtn extends StatelessWidget {
   const CustomHeaderBtn({super.key, required this.headerIndex});
@@ -14,34 +14,26 @@ class CustomHeaderBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        context.read<HomeBloc>().add(ChangeAppBarHeadersIndex(headerIndex));
+    final controller = PortfolioController.to;
+    return Obx(
+      () {
+        final isActive = controller.headerIndex.value == headerIndex;
+        return TextButton(
+          onPressed: () => controller.requestSectionNavigation(headerIndex),
+          style: TextButton.styleFrom(
+            textStyle: AppStyles.s16,
+            foregroundColor:
+                isActive ? AppColors.primaryColor : AppColors.white,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 18,
+              vertical: 26,
+            ),
+            child: Text(AppBarHeaders.values[headerIndex].label),
+          ),
+        );
       },
-      style: TextButton.styleFrom(
-        textStyle: AppStyles.s16,
-        foregroundColor: _getHeaderColor(
-          currentIndex: context.read<HomeBloc>().appBarHeaderIndex,
-          headerIndex: headerIndex,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 18,
-          vertical: 26,
-        ),
-        child: Text(
-          AppBarHeaders.values[headerIndex].getString(),
-        ),
-      ),
     );
-  }
-
-  Color _getHeaderColor({required currentIndex, required int headerIndex}) {
-    if (currentIndex == headerIndex) {
-      return AppColors.primaryColor;
-    } else {
-      return AppColors.white;
-    }
   }
 }

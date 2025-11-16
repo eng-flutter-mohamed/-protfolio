@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../../../blocs/home_bloc/home_bloc.dart';
+import '../../../controllers/portfolio_controller.dart';
 
 class IntoActions extends StatelessWidget {
   const IntoActions({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = PortfolioController.to;
     List<Widget> actions = [
       CustomButton(
-        label: AppBarHeaders.aboutMe.getString(),
+        label: AppStrings.aboutAction.tr,
         icon: Icons.person,
         backgroundColor: AppColors.primaryColor,
         onPressed: () {
-          context.read<HomeBloc>().add(ChangeAppBarHeadersIndex(1));
+          controller.requestSectionNavigation(1);
         },
         width: 160,
       ),
@@ -26,11 +28,11 @@ class IntoActions extends StatelessWidget {
           ? const SizedBox(height: 6)
           : const SizedBox(width: 32),
       CustomButton(
-        label: AppBarHeaders.projects.getString(),
+        label: AppStrings.seeProjects.tr,
         icon: Icons.remove_red_eye,
         borderColor: AppColors.primaryColor,
         onPressed: () {
-          context.read<HomeBloc>().add(ChangeAppBarHeadersIndex(2));
+          controller.requestSectionNavigation(2);
         },
         width: 160,
       ),

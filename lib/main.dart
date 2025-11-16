@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
-import 'bloc_observer.dart';
 import 'portfolio_app.dart';
+import 'presentation/controllers/portfolio_controller.dart';
 
 void main() {
-  Bloc.observer = MyBlocObserver();
+  WidgetsFlutterBinding.ensureInitialized();
+  Get.put(PortfolioController(), permanent: true);
   runApp(const PortfolioApp());
 }

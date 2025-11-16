@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
@@ -39,9 +40,8 @@ class _BasicServiceItemState extends State<BasicServiceItem> {
             if (context.width > DeviceType.mobile.getMinWidth())
               FittedBox(
                 child: Text(
-                  widget.service.service,
+                  widget.service.titleKey.tr,
                   style: AppStyles.s24,
-                  // minFontSize: 8,
                   textAlign: TextAlign.center,
                 ),
               ),

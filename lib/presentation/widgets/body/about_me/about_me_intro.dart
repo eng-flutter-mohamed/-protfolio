@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_enums.dart';
@@ -15,13 +16,13 @@ class AboutMeIntro extends StatelessWidget {
       children: [
         FittedBox(
           child: Text(
-            AppBarHeaders.aboutMe.getString(),
+            AppBarHeaders.aboutMe.label,
             style: AppStyles.s32,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          AppStrings.aboutMeMsg,
+          AppStrings.aboutMeMsg.tr,
           style: context.width < DeviceType.mobile.getMaxWidth()
               ? AppStyles.s14
               : AppStyles.s18,

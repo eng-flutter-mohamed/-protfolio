@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import 'config/theme_manager.dart';
-import 'presentation/blocs/home_bloc/home_bloc.dart';
+import 'core/localization/portfolio_translations.dart';
+import 'presentation/controllers/portfolio_controller.dart';
 import 'presentation/views/home_view.dart';
 
 class PortfolioApp extends StatelessWidget {
@@ -10,13 +11,16 @@ class PortfolioApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: CustomTheme.darkTheme(),
-      title: 'Mohamed mostafa',
-      home: BlocProvider<HomeBloc>(
-        create: (context) => HomeBloc(),
-        child: const HomeView(),
+    final controller = PortfolioController.to;
+    return Obx(
+      () => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        translations: PortfolioTranslations(),
+        locale: controller.locale.value,
+        fallbackLocale: controller.supportedLocales.first,
+        theme: CustomTheme.darkTheme(),
+        title: 'Mohamed Mostafa',
+        home: const HomeView(),
       ),
     );
   }

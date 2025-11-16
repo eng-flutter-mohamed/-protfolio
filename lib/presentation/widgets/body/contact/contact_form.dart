@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
 
@@ -37,22 +39,25 @@ class _ContactFormState extends State<ContactForm> {
       path: 'mohamedmflutter.dev@gmail.com',
       query: _encodeQueryParameters({
         'subject': _subjectController.text,
-        'body': 'From: ${_nameController.text} (${_emailController.text})\n\n${_messageController.text}',
+        'body':
+            'From: ${_nameController.text} (${_emailController.text})\n\n${_messageController.text}',
       }),
     );
 
     if (await canLaunchUrl(emailUri)) {
       await launchUrl(emailUri);
     } else {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Could not launch email client')),
+        SnackBar(content: Text(AppStrings.contactError.tr)),
       );
     }
   }
 
   String? _encodeQueryParameters(Map<String, String> params) {
     return params.entries
-        .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .map((e) =>
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
   }
 
@@ -68,37 +73,50 @@ class _ContactFormState extends State<ContactForm> {
             TextFormField(
               controller: _nameController,
               style: AppStyles.s14,
-              decoration: const InputDecoration(labelText: 'Name'),
-              validator: (value) => value!.isEmpty ? 'Name is required' : null,
+              decoration:
+                  InputDecoration(labelText: AppStrings.contactNameLabel.tr),
+              validator: (value) =>
+                  value!.isEmpty ? AppStrings.validationName.tr : null,
             ),
             const SizedBox(height: 12),
             TextFormField(
               controller: _emailController,
               style: AppStyles.s14,
-              decoration: const InputDecoration(labelText: 'E-mail'),
-              validator: (value) =>
-                  value!.isEmpty || !value.contains('@') ? 'Invalid email' : null,
+              decoration:
+                  InputDecoration(labelText: AppStrings.contactEmailLabel.tr),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return AppStrings.validationEmail.tr;
+                }
+                if (!value.contains('@')) {
+                  return AppStrings.validationEmailInvalid.tr;
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 12),
             TextFormField(
               controller: _subjectController,
               style: AppStyles.s14,
-              decoration: const InputDecoration(labelText: 'Subject'),
-              validator: (value) => value!.isEmpty ? 'Subject is required' : null,
+              decoration:
+                  InputDecoration(labelText: AppStrings.contactSubjectLabel.tr),
+              validator: (value) =>
+                  value!.isEmpty ? AppStrings.validationSubject.tr : null,
             ),
             const SizedBox(height: 12),
             TextFormField(
               controller: _messageController,
               maxLines: 5,
               style: AppStyles.s14,
-              decoration: const InputDecoration(
-                labelText: 'Type a message here...',
+              decoration: InputDecoration(
+                labelText: AppStrings.contactMessageLabel.tr,
               ),
-              validator: (value) => value!.isEmpty ? 'Message is required' : null,
+              validator: (value) =>
+                  value!.isEmpty ? AppStrings.validationMessage.tr : null,
             ),
             const SizedBox(height: 16),
             CustomButton(
-              label: 'Submit',
+              label: AppStrings.contactSubmit.tr,
               onPressed: _sendEmail,
               backgroundColor: AppColors.primaryColor,
               width: _getFormWidth(context.width),

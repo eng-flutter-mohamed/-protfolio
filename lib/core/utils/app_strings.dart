@@ -1,18 +1,59 @@
 abstract class AppStrings {
-  static const String developerName = 'Mohamed mostafa';
-  static const String helloIM = 'Hello, i’m';
-  static const String introMsg =
-      "Flutter developer with +2 years of experience. I have completed many projects that prove my ability to provide creative and high-quality solutions.";
-  static String aboutMeMsg =
-      "I'm a Flutter developer with a good understanding of the Flutter framework, I have experience in UI design, API integration, clean code writing and knowledge of solid principles and clean architecture. I have completed many projects that prove my ability to provide creative and high-quality solutions and finish them in an almost complete way with a great user experience without any problems facing users";
-  static const String numOfExperience = '2+';
-  static const String experienceMsg =
-      'Years of experience, Specialized in building apps, while ensuring a seamless web experience for end users.';
-  static const String servicesIOffer = 'The services i offer:';
-  static const String featuredProjects = 'Featured projects';
-  static const String projectsMsg =
-      "I have completed many projects that prove my ability to provide creative and high-quality solutions and finish them in an almost complete way with a great user experience without any problems facing users.";
-  static const String contactMsg =
-      "For any service and work you can contact with me by send an email or by our social media accounts.";
-  static const String contactWithMe = 'Contact with me';
+  static const developerName = 'developer_name';
+  static const helloIM = 'hello_im';
+  static const introMsg = 'intro_msg';
+  static const heroRole = 'hero_role';
+  static const heroStatus = 'hero_status';
+  static const heroFocus = 'hero_focus';
+  static const aboutMeMsg = 'about_me_msg';
+  static const numOfExperience = 'num_of_experience';
+  static const experienceMsg = 'experience_msg';
+  static const servicesIOffer = 'services_i_offer';
+  static const servicesSubHeadline = 'services_sub_headline';
+  static const featuredProjects = 'featured_projects';
+  static const projectsMsg = 'projects_msg';
+  static const contactMsg = 'contact_msg';
+  static const contactWithMe = 'contact_with_me';
+  static const highlightApps = 'highlight_apps';
+  static const highlightClients = 'highlight_clients';
+  static const highlightMentorship = 'highlight_mentorship';
+  static const highlightExperience = 'highlight_experience';
+  static const headerHome = 'header_home';
+  static const headerAbout = 'header_about';
+  static const headerProjects = 'header_projects';
+  static const headerContact = 'header_contact';
+  static const seeProjects = 'see_projects';
+  static const aboutAction = 'about_action';
+  static const contactNameLabel = 'contact_name_label';
+  static const contactEmailLabel = 'contact_email_label';
+  static const contactSubjectLabel = 'contact_subject_label';
+  static const contactMessageLabel = 'contact_message_label';
+  static const contactSubmit = 'contact_submit';
+  static const validationName = 'validation_name';
+  static const validationEmail = 'validation_email';
+  static const validationEmailInvalid = 'validation_email_invalid';
+  static const validationSubject = 'validation_subject';
+  static const validationMessage = 'validation_message';
+  static const contactError = 'contact_error';
+  static const projectPreview = 'project_preview';
+  static const projectGithub = 'project_github';
+  static const projectPlayStore = 'project_play_store';
+  static const projectUnavailable = 'project_unavailable';
+  static const projectAppStore = 'project_app_store';
+  static const projectVisitSite = 'project_visit_site';
+  static const projectTagMobile = 'project_tag_mobile';
+  static const projectTagWeb = 'project_tag_web';
+  static const projectTagHealthcare = 'project_tag_healthcare';
+  static const projectTagLearning = 'project_tag_learning';
+  static const projectTagDelivery = 'project_tag_delivery';
+  static const projectTagEntertainment = 'project_tag_entertainment';
+  static const projectTagFintech = 'project_tag_fintech';
+  static const projectTagSaas = 'project_tag_saas';
+  static const projectTagCrossPlatform = 'project_tag_cross_platform';
+  static const projectTagMultistore = 'project_tag_multistore';
+  static const projectTagWebPlatform = 'project_tag_web_platform';
+  static const projectTagEcommerce = 'project_tag_ecommerce';
+  static const projectTagFlutter = 'project_tag_flutter';
+  static const projectTagPublished = 'project_tag_published';
+  static const projectTagTravel = 'project_tag_travel';
 }

@@ -10,13 +10,15 @@ class DetailedServicesGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = context.width;
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: _getCrossAxisCount(context.width),
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
+        crossAxisCount: _getCrossAxisCount(width),
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
+        childAspectRatio: _getChildAspectRatio(width),
       ),
       itemBuilder: (context, index) {
         return DetailedServiceItem(
@@ -37,6 +39,18 @@ class DetailedServicesGrid extends StatelessWidget {
       return 3;
     } else {
       return numOfServices > 3 ? 3 : numOfServices;
+    }
+  }
+
+  double _getChildAspectRatio(double width) {
+    if (width < DeviceType.mobile.getMaxWidth()) {
+      return 1.05;
+    } else if (width < DeviceType.ipad.getMaxWidth()) {
+      return .95;
+    } else if (width < DeviceType.smallScreenLaptop.getMaxWidth()) {
+      return .8;
+    } else {
+      return .9;
     }
   }
 }

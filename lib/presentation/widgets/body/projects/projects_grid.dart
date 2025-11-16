@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/app_constants.dart';
 
+import '../../../../core/utils/app_constants.dart';
+import '../../../../core/utils/responsive.dart';
 import 'project_item.dart';
 
 class ProjectsGrid extends StatelessWidget {
@@ -8,21 +9,25 @@ class ProjectsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 1, // تم التعديل هنا إلى 1 لعرض عنصر واحد في كل صف
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        childAspectRatio: 1.5, // يمكن تعديل هذه النسبة لجعل العنصر أكبر
-      ),
-      itemBuilder: (context, index) {
-        return ProjectItem(
-          project: AppConstants.projects[index],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        final columns = Responsive.projectColumns(width);
+        final spacing = Responsive.projectGap(columns);
+        final itemWidth = Responsive.projectItemWidth(width, gap: spacing);
+        return Wrap(
+          spacing: spacing,
+          runSpacing: 24,
+          children: AppConstants.projects
+              .map(
+                (project) => SizedBox(
+                  width: itemWidth,
+                  child: ProjectItem(project: project),
+                ),
+              )
+              .toList(),
         );
       },
-      itemCount: AppConstants.projects.length,
     );
   }
 }

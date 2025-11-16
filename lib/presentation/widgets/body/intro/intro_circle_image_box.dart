@@ -18,12 +18,23 @@ class IntroCircleImageBox extends StatelessWidget {
     );
     return SizedBox(
       height: responsiveSize.getSize(),
-      child: const Stack(
-        alignment: Alignment.centerRight,
-        children: [
-          CircleImageBorder(),
-          IntroImage(),
-        ],
+      child: TweenAnimationBuilder<double>(
+        tween: Tween(begin: 0, end: 1),
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeOutBack,
+        builder: (context, value, child) {
+          return Transform.translate(
+            offset: Offset(0, (1 - value) * 40),
+            child: child,
+          );
+        },
+        child: const Stack(
+          alignment: Alignment.center,
+          children: [
+            CircleImageBorder(),
+            IntroImage(),
+          ],
+        ),
       ),
     );
   }

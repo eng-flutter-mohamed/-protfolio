@@ -1,23 +1,28 @@
+enum ProjectLinkType { googlePlay, appStore, web }
+
+class ProjectLink {
+  final ProjectLinkType type;
+  final String url;
+
+  const ProjectLink({required this.type, required this.url});
+}
+
 class Project {
-  final String name;
-  final String imageUrl; // الصورة الرئيسية
-  final String image1;   // الصورة الإضافية 1
-  final String image2;   // الصورة الإضافية 2
-  final String image3;   // الصورة الإضافية 3
-  final String description;
+  final String titleKey;
+  final String descriptionKey;
+  final List<String> gallery;
+  final List<ProjectLink> storeLinks;
+  final List<String> highlightKeys;
   final String? githubRepoLink;
   final String? previewLink;
-  final String? googlePlay;
 
   const Project({
-    required this.name,
-    required this.imageUrl,
-    required this.image1,
-    required this.image2,
-    required this.image3,
-    required this.description,
+    required this.titleKey,
+    required this.descriptionKey,
+    required this.gallery,
+    this.storeLinks = const [],
+    this.highlightKeys = const [],
     this.githubRepoLink,
     this.previewLink,
-    this.googlePlay,
   });
 }

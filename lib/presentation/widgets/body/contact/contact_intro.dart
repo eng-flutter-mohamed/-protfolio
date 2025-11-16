@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:portfolio/presentation/widgets/body/contact/social_medial_icons.dart';
 
 import '../../../../core/utils/app_strings.dart';
@@ -14,13 +15,13 @@ class ContactIntro extends StatelessWidget {
       children: [
         FittedBox(
           child: Text(
-            AppStrings.contactWithMe,
+            AppStrings.contactWithMe.tr,
             style: AppStyles.s32,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          AppStrings.contactMsg,
+          AppStrings.contactMsg.tr,
           style: AppStyles.s18,
           softWrap: true,
         ),

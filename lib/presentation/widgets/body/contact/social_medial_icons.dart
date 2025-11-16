@@ -28,7 +28,7 @@ class SocialMediaIcons extends StatelessWidget {
           icon: FontAwesomeIcons.twitter,
           link: SocialLinks.twitter,
         ),
-         SocialMediaIconBtn(
+        SocialMediaIconBtn(
           icon: FontAwesomeIcons.whatsapp,
           link: SocialLinks.whatsapp,
         ),
